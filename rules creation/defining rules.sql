@@ -1,6 +1,7 @@
 -- Databricks notebook source
-select current_catalog();
-select current_schema();
+
+use catalog hospital;
+select current_catalog()
 
 -- COMMAND ----------
 
@@ -22,3 +23,7 @@ FROM (
   ("firstname_not_null"," first_name IS NOT NULL or lower(firstname)!='null'","validity_firstname"),
   ("visit_date_not_null"," visit_date IS NOT NULL","validity_visitdate")
   );
+
+-- COMMAND ----------
+
+select * from hospital.default.rules;
