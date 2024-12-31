@@ -292,7 +292,7 @@ name = 'gold_transactions'
 def transactions():
 	transactions_df = spark.readStream.table('LIVE.silver_transactions')\
 	.withColumn('fk_patient_id',concat_ws('-','src_patient_id','data_source'))\
-	.withColumn('fk_provider_id',when(col('data_source') == 'hos-a' , concat(lit('H1-'),col('src_provider_id'))).otherwise( concat(lit('H2-'),col('src_provider_id'))))\
+	.withColumn('fk_provider_id',when(col('data_source') == 'hos-a' , concat(lit('H1-'),col('src_provider_id'))).otherwise(concat(lit('H2-'),col('src_provider_id'))))\
      .withColumn('fk_dept_id',concat_ws('-',col('src_dept_id'),col('data_source')))\
 	.drop('src_patient_id')\
 	.drop('src_provider_id')\
