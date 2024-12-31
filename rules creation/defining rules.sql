@@ -1,11 +1,11 @@
 -- Databricks notebook source
-
 use catalog hospital;
 select current_catalog()
 
 -- COMMAND ----------
 
-CREATE OR REPLACE TABLE hospital.default.rules
+truncate TABLE hospitalsdata.default.rules;
+CREATE OR REPLACE TABLE hospitalsdata.default.rules
 AS SELECT
   col1 AS name,
   col2 AS constraint,
@@ -20,10 +20,10 @@ FROM (
   ("src_transaction_id_not_null"," src_transaction_id IS NOT NULL","validity_transaction"),
   ("visit_date_not_null"," visit_date IS NOT NULL","validity_visitdate"),
   ("dob_not_null"," dob IS NOT NULL","validity_dob"),
-  ("firstname_not_null"," first_name IS NOT NULL or lower(firstname)!='null'","validity_firstname"),
+  ("firstname_not_null"," first_name IS NOT NULL or lower(first_name)!='null'","validity_firstname"),
   ("visit_date_not_null"," visit_date IS NOT NULL","validity_visitdate")
   );
 
 -- COMMAND ----------
 
-select * from hospital.default.rules;
+select * from hospitalsdata.default.rules;
